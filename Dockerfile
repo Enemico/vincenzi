@@ -25,10 +25,8 @@ COPY ./service/donate-level.hpp /xmr-stak/xmr-stak/donate-level.hpp
 
 RUN cd xmr-stak \
     && cmake ${XMRSTAK_CMAKE_FLAGS} . \
-    && make \
-    && cd - \
-    && mv /xmr-stak/bin/* /usr/local/bin/ \
-    && rm -rf /xmr-stak
+    && make
+
 
 USER root
 RUN apt-get purge -y -qq cmake cuda-core-9-0 git cuda-cudart-dev-9-0 libhwloc-dev libmicrohttpd-dev libssl-dev \
